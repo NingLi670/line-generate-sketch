@@ -35,8 +35,11 @@ python test.py --dataroot /path/to/data --name pix2pix --model pix2pix --directi
 
 ### Reference
 [1] [Image-to-Image Translation with Conditional Adversarial Networks](https://arxiv.org/abs/1611.07004)
+
 [2] [Encoding in Style: a StyleGAN Encoder for Image-to-Image Translation](https://arxiv.org/abs/2008.00951)
+
 [3] [Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks](https://arxiv.org/abs/1703.10593)
+
 [4] [Analyzing and Improving the Image Quality of StyleGAN](https://arxiv.org/abs/1912.04958)
 
 ## Acknowledgments
