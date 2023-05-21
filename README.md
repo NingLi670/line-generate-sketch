@@ -77,7 +77,7 @@ Additionally, if you have tensorboard installed, you can visualize tensorboard l
 
 
 ##### Line to Sketch
-```
+```bash
 python scripts/train.py \
 --dataset_type=celebs_sketch_to_face \
 --exp_dir=finetune_5_8 \
@@ -104,7 +104,7 @@ python scripts/train.py \
 #### Inference
 Having trained your model, you can use `scripts/inference.py` to apply the model on a set of images.   
 For example, 
-```
+```bash
 python scripts/inference.py \
 --exp_dir test_5_7 \
 --checkpoint_path finetune_5_7/checkpoints/best_model.pt \
@@ -125,7 +125,7 @@ The model can be downloaded at https://jbox.sjtu.edu.cn/l/A1BMJJ
 | &boxv;&nbsp; &boxvr;&nbsp; encoders | Folder containing our pSp encoder architecture implementation and ArcFace encoder implementation from [TreB1eN](https://github.com/TreB1eN/InsightFace_Pytorch)
 | &boxv;&nbsp; &boxvr;&nbsp; mtcnn | MTCNN implementation from [TreB1eN](https://github.com/TreB1eN/InsightFace_Pytorch)
 | &boxv;&nbsp; &boxvr;&nbsp; stylegan2 | StyleGAN2 model from [rosinality](https://github.com/rosinality/stylegan2-pytorch)
-| &boxv;&nbsp; &boxur;&nbsp; psp.py | Implementation of our pSp framework
+| &boxv;&nbsp; &boxur;&nbsp; psp | Implementation of our pSp framework
 | &boxvr;&nbsp; notebook | Folder with jupyter notebook containing pSp inference playground
 | &boxvr;&nbsp; options | Folder with training and test command-line options
 | &boxvr;&nbsp; scripts | Folder with running scripts for training and inference
@@ -144,29 +144,30 @@ I have tested on:
 ### Usage
 
 First create lmdb datasets:
-
-> python prepare_data.py --out LMDB_PATH --n_worker N_WORKER --size SIZE1,SIZE2,SIZE3,... DATASET_PATH
+```bash
+python prepare_data.py --out LMDB_PATH --n_worker N_WORKER --size SIZE1,SIZE2,SIZE3,... DATASET_PATH
+```
 
 This will convert images to jpeg and pre-resizes it. This implementation does not use progressive growing, but you can create multiple resolution datasets using size arguments with comma separated lists, for the cases that you want to try another resolutions later.
 
 #### Training
-
-> python train.py --size 256 --ckpt checkpoint/face.pt  --n_sample 25 --batch 8 --iter 10000 --wandb ./data_lmdb/
-
-train.py supports Weights & Biases logging. If you want to use it, add --wandb arguments to the script.
+```bash
+python train.py --size 256 --ckpt checkpoint/face.pt  --n_sample 25 --batch 8 --iter 10000 --wandb ./data_lmdb/
+```
+`train.py` supports Weights & Biases logging. If you want to use it, add --wandb arguments to the script.
 
 #### Generate samples
-
-> python generate.py --sample N_FACES --pics N_PICS --ckpt PATH_CHECKPOINT
-
+```bash
+python generate.py --sample N_FACES --pics N_PICS --ckpt PATH_CHECKPOINT
+```
 You should change your size (--size 256 for example) if you train with another dimension.
 
 The model can be downloaded at https://jbox.sjtu.edu.cn/l/x1NgwP
 
 #### Project images to latent spaces
-
-> python projector.py --ckpt [CHECKPOINT] --size [GENERATOR_OUTPUT_SIZE] FILE1 FILE2 ...
-
+```bash
+python projector.py --ckpt [CHECKPOINT] --size [GENERATOR_OUTPUT_SIZE] FILE1 FILE2 ...
+```
 ## Reference
 [1] [Image-to-Image Translation with Conditional Adversarial Networks](https://arxiv.org/abs/1611.07004)
 
